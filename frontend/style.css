@@ -8,6 +8,10 @@
     gap: 1rem;
 }
 
+.align-center {
+    align-items: center;
+}
+
 #todos {
     margin: 0;
     padding: 0;
