@@ -1,6 +1,12 @@
 node_modules/
-.zip
-.hwp
-.pdf
-.7z
-.doc
+
+#파일 제외
+*.zip
+*.hwp
+*.pdf
+*.7z
+*.doc
+*.env
+*.env.locl
+*.env.development
+*.env.production
