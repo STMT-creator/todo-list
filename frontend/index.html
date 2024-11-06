@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todos App</title>
     <!-- MVP CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
     <link rel="stylesheet" href="style.css">
     <!-- jQuery CDN : Content Delivey Network-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="main.js"></script>
 </head>
+
 <body>
-    <h1>Todos App</h1>
-    <div class="info">
-        <p>Total : 3</p>
-        <p>2024.11.01</p>
-    </div>
-    <form id="todos-form" class="d-flex align-center gap-1">
+    <header>
+        <h1>Todos App</h1>
+        <div class="info">
+            <p>Total : 3</p>
+            <p>2024.11.01</p>
+        </div>
+    </header>
+    <main>
+        <form id="todos-form" class="d-flex align-center gap-1">
             <input type="text">
             <input type="submit" value="+">
-    </form>
-    <ul id="todos">
-        <p>loading...</p>
-    </ul>
+        </form>
+        <ul id="todos">
+            <p>loading...</p>
+        </ul>
+    </main>
+    <footer>
+        <hr>
+        <p>copyright&copy; todos-lab</p>
+    </footer>
 </body>
+
 </html>
