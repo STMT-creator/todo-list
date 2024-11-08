@@ -27,10 +27,10 @@ function createTodo() {
     })
 }
 
-// function clearInputAndFocus({
-//     todosForm.querySelector("#todo-text").value = "";
-// todosForm.querySelector("#todo-text").focus();
-// })
+function clearInputAndFocus(){
+    todosForm.querySelector("#todo-text").value = "";
+todosForm.querySelector("#todo-text").focus();
+}
 async function fetchTodos() {
     $.ajax({
         url: 'http://localhost:3000/todos',
