@@ -1,4 +1,37 @@
 $(function () {
+    fetchTodos();
+    createTodo();
+});
+
+function createTodo() {
+    const todosForm = document.querySelector("#todos-form")
+    todosForm.addEventListener("submit", function () {
+        // e.preventDefault();
+        $.ajax({
+            url: "http://localhost:3000/todos",
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            data: JSON.stringify({
+                title: todosForm.querySelector("#todo-text").value,
+                completed: false
+            }),
+            success: async function (result) {
+                console.log(result);
+                await fetchTodos();
+                todosForm.querySelector("#todo-text").value = "";
+                clearInputAndFocus()
+            }
+        })
+    })
+}
+
+// function clearInputAndFocus({
+//     todosForm.querySelector("#todo-text").value = "";
+// todosForm.querySelector("#todo-text").focus();
+// })
+async function fetchTodos() {
     $.ajax({
         url: 'http://localhost:3000/todos',
         method: "get",
@@ -15,4 +48,4 @@ $(function () {
             todoUL.html(str);
         },
     });
-});
+}
