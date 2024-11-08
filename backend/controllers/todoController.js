@@ -27,7 +27,11 @@ const getTodo = async (req, res) => {
 
 const addTodos = async (req, res) => {
     const { title, completed } = req.body;
+    console.log(req.body);
     try {
+        if (!title) {
+            throw new Error("내용이 없습니다.")
+        }
         const todo = await Todo.create({
             title,
             completed
@@ -35,7 +39,7 @@ const addTodos = async (req, res) => {
     } catch (error) {
         console.log("addTodo is Fail : ", error)
     }
-    res.status(200).send("add Todo");
+    res.status(200).send("할일이 추가되었습니다.");
 }
 
 const updateTodo = async (req, res) => {
@@ -57,7 +61,7 @@ const removeTodo = async (req, res) => {
     const id = req.params.id;
     let todo;
     try {
-        todo = await Todo.deleteOne({_id: id})
+        todo = await Todo.deleteOne({ _id: id })
     } catch (error) {
         console.log("deleteTodo is Fail : ", error)
     }
