@@ -63,8 +63,11 @@ function callModal() {
         const todoTitle = edit.siblings("p").text();
         const modal = $("#modal");
         modal.find("#prev-todo").val(todoTitle);
-        modal.attr("class", "");
+        modal.fadeIn("fast");
         modal.find("#next-todo").focus();
+    });
+    $("#hide-modal").on("click", function(){
+        $("#modal").fadeOut("fast")
     })
 }
 function removeTodo() {
