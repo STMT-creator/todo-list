@@ -16,3 +16,55 @@
     margin: 0;
     padding: 0;
 }
+
+#todo-text {
+    margin: 0;
+    height: 40px;
+}
+
+.add-submit {
+    font-size: 2rem;
+    height: 60px;
+}
+
+#modal {
+    background-color: rgba(0, 0, 0, .2);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    position: absolute;
+    background-color: white;
+    border-radius: 20px;
+    width: 1200px;
+    height: 600px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content h1,
+.content p {
+    text-align: center;
+    text-transform: capitalize;
+    padding: 1rem;
+}
+
+#edit-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#edit-form input[type="text"] {
+    height: 40px;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.hide {
+    display: none;
+}

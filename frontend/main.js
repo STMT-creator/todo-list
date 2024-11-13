@@ -4,9 +4,14 @@ $(function () {
 });
 
 function createTodo() {
-    const todosForm = document.querySelector("#todos-form")
-    todosForm.addEventListener("submit", function () {
-        // e.preventDefault();
+    const todosForm = $("#todos-form");
+    const todoText = $("#todo-text");
+    todosForm.on("submit", function (e) {
+        e.preventDefault();
+        if (todoText.val() == "") {
+            alert("할일 항목이 비어있습니다.");
+            return;
+        }
         $.ajax({
             url: 'http://localhost:3000/todos',
             method: "post",
@@ -14,13 +19,12 @@ function createTodo() {
                 "Content-Type": "application/json"
             },
             data: JSON.stringify({
-                title: todosForm.querySelector("#todo-text").value,
+                title: $("#todo-text").val(),
                 completed: false
             }),
             success: async function (result) {
-                console.log(result);
                 await fetchTodos();
-                todosForm.querySelector("#todo-text").value = "";
+                $("#todo-text").val = "";
                 clearInputAndFocus()
             }
         })
@@ -28,8 +32,8 @@ function createTodo() {
 }
 
 function clearInputAndFocus() {
-    todosForm.querySelector("#todo-text").value = "";
-    todosForm.querySelector("#todo-text").focus();
+    $("#todo-text").val("");
+    $("#todo-text").focus();
 }
 async function fetchTodos() {
     $.ajax({
@@ -47,18 +51,30 @@ async function fetchTodos() {
 </li>`});
             todoUL.html(str);
             removeTodo();
+            callModal();
         },
     });
 }
-
+function callModal() {
+    const editTodo = $(".modify-btn");
+    editTodo.on("click", function () {
+        const edit = $(this);
+        const todoId = edit.parent().attr("date-id");
+        const todoTitle = edit.siblings("p").text();
+        const modal = $("#modal");
+        modal.find("#prev-todo").val(todoTitle);
+        modal.attr("class", "");
+        modal.find("#next-todo").focus();
+    })
+}
 function removeTodo() {
     const removeBtns = $(".remove-btn");
-    removeBtns.on("click", function(){
+    removeBtns.on("click", function () {
         const currBtn = $(this); // 현재 누른 버튼이 무엇인지
         $.ajax({
             url: `http://localhost:3000/todos/${currBtn.parent().attr("data-id")}`,
             method: "delete",
-            success: function() {
+            success: function () {
                 alert("선택항목을 삭제하였습니다.")
             }
         }).done(() => {
