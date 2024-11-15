@@ -8,6 +8,14 @@
     gap: 1rem;
 }
 
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
 .align-center {
     align-items: center;
 }
@@ -67,4 +75,9 @@
 
 .hide {
     display: none;
+}
+
+.remove-btn {
+    background-color: lightcoral;
+    color: white;
 }
