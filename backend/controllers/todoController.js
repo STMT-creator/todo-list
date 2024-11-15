@@ -5,7 +5,7 @@ const getALLTodos = async (req, res) => {
     try {
         todos = await Todo.find();
         if (!todos) {
-            throw new Error("등록된 할일이 없습니다.")
+            throw new Error("등록된 할일이 없습니다."),
             res.status(501).send("할일이 등록되어 있지 않습니다.")
         }
     } catch (error) {
@@ -36,10 +36,17 @@ const addTodos = async (req, res) => {
             title,
             completed
         })
+        if (todo) {
+            res.status(200).send("할일이 추가되었습니다.");
+        } else {
+            res.status(500).send({
+                message: "fail",
+                status: 500
+            })
+        }
     } catch (error) {
         console.log("addTodo is Fail : ", error)
     }
-    res.status(200).send("할일이 추가되었습니다.");
 }
 
 const updateTodo = async (req, res) => {
@@ -51,10 +58,13 @@ const updateTodo = async (req, res) => {
             title,
             completed
         });
+        res.status(200).json(todo);
     } catch (error) {
         console.log("updateTodo is Fail : ", error)
+        res.status(500).json({
+            message: "fail"
+        })
     }
-    res.status(200).json(todo);
 }
 
 const removeTodo = async (req, res) => {
