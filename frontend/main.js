@@ -24,7 +24,7 @@ function createTodo() {
             }),
             success: async function (result) {
                 await fetchTodos();
-                $("#todo-text").val = "";
+                $("#todo-text").val("");
                 clearInputAndFocus()
             }
         })
