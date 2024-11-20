@@ -81,3 +81,22 @@
     background-color: lightcoral;
     color: white;
 }
+
+@media screen and (max-width: 412px) {
+    html {
+        margin: 0 auto;
+        text-align: center;
+        width: 380px;
+    }
+    #edit-form {
+        margin: 0 auto;
+        width: 380px;
+        display: flex;
+        display: inline-block;
+        /* flex-direction: row;
+        flex-wrap: wrap; */
+    }
+    .edit-btn {
+        display: flex;
+    }
+}
